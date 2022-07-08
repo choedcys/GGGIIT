@@ -2,26 +2,37 @@
 #include<iostream>
 #include"header.h"
 using namespace std;
-Product::Product(){}
-Product::Product(string temp1, double temp2) {
-	name = temp1;
-	price = temp2;
+void BankAcc:: deposit(double temp) {
+	money += temp;
 }
-double Product::getPrice() {
-	return price;
-}
-void Product::print() {
-	cout << "상품명 : " << name << endl;
-	cout << "가 격 : " << price << endl;
-}
-DiscountProduct::DiscountProduct() {}
-DiscountProduct::DiscountProduct(string temp1, double temp2, double temp3) {
-	name = temp1;
-	price = temp2;
-	discount = temp3;
+double BankAcc::withdraw(double temp) {
+	money -= temp;
+	return money;
 }
 
-double DiscountProduct:: getPrice() {
-	double drate = (100 - discount) / 100;
-	return price * drate;
+SavingAcc::SavingAcc() {}
+SavingAcc::SavingAcc(double temp) {
+	money = temp;
+	rate = 9.0;
+}
+double SavingAcc::getinterest() {
+	interest = money * (rate/100);
+	return interest;
+}
+void SavingAcc::print() {
+	cout << "---저축예금 계좌" << endl;
+	cout << "예금액: " << money;
+}
+CheckingAcc::CheckingAcc() {}
+CheckingAcc::CheckingAcc(double temp) {
+	money = temp;
+	rate = 5.0;
+}
+double CheckingAcc::getinterest() {
+	interest = money * (rate / 100);
+	return interest;
+}
+void CheckingAcc::print() {
+	cout << "---당좌예금 계좌" << endl;
+	cout << "예금액: " << money;
 }

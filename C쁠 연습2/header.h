@@ -1,22 +1,26 @@
-//18-2
-#include<iostream>
-using namespace std;
-
-class Product {
+//18-3
+class BankAcc {
 protected:
-	string name;
-	double price;
+	double money;
+	double rate;
+	double interest;
 public:
-	Product();
-	Product(string temp1, double temp2);
-	virtual double getPrice();
-	void print();
+	void deposit(double temp);
+	double withdraw(double temp);
+	virtual double getinterest() =0;
+	virtual void print() = 0;
 };
-class DiscountProduct : public Product {
-private:
-	double discount;
+class SavingAcc :public BankAcc {
 public:
-	DiscountProduct();
-	DiscountProduct(string temp1, double temp2, double temp3);
-	virtual double getPrice();
+	double getinterest();
+	void print();
+	SavingAcc();
+	SavingAcc(double temp);
+};
+class CheckingAcc :public BankAcc {
+public:
+	double getinterest();
+	void print();
+	CheckingAcc();
+	CheckingAcc(double temp);
 };
