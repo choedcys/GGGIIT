@@ -1,18 +1,27 @@
-//18-1
+//18-2
 #include<iostream>
 #include"header.h"
 using namespace std;
-
-WonToDollar::WonToDollar(double temp) {
-		ratio = temp;
+Product::Product(){}
+Product::Product(string temp1, double temp2) {
+	name = temp1;
+	price = temp2;
+}
+double Product::getPrice() {
+	return price;
+}
+void Product::print() {
+	cout << "상품명 : " << name << endl;
+	cout << "가 격 : " << price << endl;
+}
+DiscountProduct::DiscountProduct() {}
+DiscountProduct::DiscountProduct(string temp1, double temp2, double temp3) {
+	name = temp1;
+	price = temp2;
+	discount = temp3;
 }
 
-void WonToDollar:: run() {
-	double money;
-	cout << "원을 달러로 바꿉니다. 원을 입력하세요: ";
-	cin >> money;
-	cout<<"변환결과: "<<convert(money);
+double DiscountProduct:: getPrice() {
+	double drate = (100 - discount) / 100;
+	return price * drate;
 }
-double WonToDollar::convert(double src){
-	return src / ratio;
-};

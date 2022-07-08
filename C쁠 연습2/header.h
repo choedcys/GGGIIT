@@ -1,14 +1,22 @@
-//18-1
-class Converter {
-protected:
-	double ratio;
-public:
-	virtual double convert(double src) = 0;
-};
+//18-2
+#include<iostream>
+using namespace std;
 
-class WonToDollar : public Converter {
+class Product {
+protected:
+	string name;
+	double price;
 public:
-	WonToDollar(double temp);
-	void run();
-	double convert(double src);
+	Product();
+	Product(string temp1, double temp2);
+	virtual double getPrice();
+	void print();
+};
+class DiscountProduct : public Product {
+private:
+	double discount;
+public:
+	DiscountProduct();
+	DiscountProduct(string temp1, double temp2, double temp3);
+	virtual double getPrice();
 };
