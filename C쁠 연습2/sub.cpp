@@ -1,38 +1,35 @@
-//18-2
+//18-5
 #include<iostream>
 #include"header.h"
 using namespace std;
-void BankAcc:: deposit(double temp) {
-	money += temp;
-}
-double BankAcc::withdraw(double temp) {
-	money -= temp;
-	return money;
-}
 
-SavingAcc::SavingAcc() {}
-SavingAcc::SavingAcc(double temp) {
-	money = temp;
-	rate = 9.0;
+void LoopAdder::read() {
+	cout << name << ":" << endl;
+	cout << "처음 수에서 두번째 수까지 더합니다. 두 수를 입력하세요 >> ";
+	cin >> x >> y;
 }
-double SavingAcc::getinterest() {
-	interest = money * (rate/100);
-	return interest;
+void LoopAdder::write() {
+	cout << x << "에서 " << y << "까지의 합 = " << sum << " 입니다" << endl;
 }
-void SavingAcc::print() {
-	cout << "---저축예금 계좌" << endl;
-	cout << "예금액: " << money;
+void LoopAdder::run() {
+	read();
+	sum = calculate();
+	write();
 }
-CheckingAcc::CheckingAcc() {}
-CheckingAcc::CheckingAcc(double temp) {
-	money = temp;
-	rate = 5.0;
+LoopAdder::LoopAdder(string temp = "") {
+	this->name = temp;
 }
-double CheckingAcc::getinterest() {
-	interest = money * (rate / 100);
-	return interest;
-}
-void CheckingAcc::print() {
-	cout << "---당좌예금 계좌" << endl;
-	cout << "예금액: " << money;
-}
+int LoopAdder::getX() { return x; }
+int LoopAdder::getY() { return y; }
+
+ForLoopAdder::ForLoopAdder(string temp) : LoopAdder(temp) {}
+int ForLoopAdder::calculate() {
+	int sum = 0, temp1 = getX();
+	while (1) {
+		sum += temp1;
+		temp1++;
+		if (temp1 == getY() + 1)
+			break;
+	}
+	return sum;
+};

@@ -1,26 +1,23 @@
-//18-3
-class BankAcc {
+//18-5
+#include<iostream>
+using namespace std;
+
+class LoopAdder { 
+	string name; 
+	int x, y, sum;
+	void read();
+	void write();
 protected:
-	double money;
-	double rate;
-	double interest;
+	LoopAdder(string temp);
+	int getX();
+	int getY();
+	virtual int calculate() = 0;
 public:
-	void deposit(double temp);
-	double withdraw(double temp);
-	virtual double getinterest() =0;
-	virtual void print() = 0;
+	void run();
 };
-class SavingAcc :public BankAcc {
+
+class ForLoopAdder :public LoopAdder{
 public:
-	double getinterest();
-	void print();
-	SavingAcc();
-	SavingAcc(double temp);
-};
-class CheckingAcc :public BankAcc {
-public:
-	double getinterest();
-	void print();
-	CheckingAcc();
-	CheckingAcc(double temp);
+	ForLoopAdder(string temp);
+	int calculate();
 };
