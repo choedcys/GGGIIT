@@ -1,9 +1,9 @@
+//18-1
 #include<iostream>
+#include"header.h"
 using namespace std;
 
 int main() {
-	char e[20] = "HelloWorld";
-	for (int i = 0; i < strlen(e); i++) {
-		cout << e[i]<<endl;
-	}
+    WonToDollar wd(1010);
+    wd.run();
 }
