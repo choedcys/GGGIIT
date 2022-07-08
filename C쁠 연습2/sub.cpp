@@ -1,35 +1,22 @@
-//18-5
+//18-4
 #include<iostream>
+#include<iomanip>
 #include"header.h"
 using namespace std;
-
-void LoopAdder::read() {
-	cout << name << ":" << endl;
-	cout << "처음 수에서 두번째 수까지 더합니다. 두 수를 입력하세요 >> ";
-	cin >> x >> y;
+TV::TV(string temp1, int temp2, int temp3, string temp4) {
+	name = temp1;
+	size = temp2;
+	pr = temp3;
+	mk = temp4;
 }
-void LoopAdder::write() {
-	cout << x << "에서 " << y << "까지의 합 = " << sum << " 입니다" << endl;
+void TV::title() {
+	cout << name << setw(5) << size << setw(10)<< pr << setw(10) << mk<<endl;
 }
-void LoopAdder::run() {
-	read();
-	sum = calculate();
-	write();
+Refgr::Refgr(string temp1, int temp2, string temp3) {
+	name = temp1;
+	pr = temp2;
+	mk = temp3;
 }
-LoopAdder::LoopAdder(string temp = "") {
-	this->name = temp;
+void Refgr::title() {
+	cout << name << setw(5) << "   " << setw(10) << pr << setw(10) << mk << endl;
 }
-int LoopAdder::getX() { return x; }
-int LoopAdder::getY() { return y; }
-
-ForLoopAdder::ForLoopAdder(string temp) : LoopAdder(temp) {}
-int ForLoopAdder::calculate() {
-	int sum = 0, temp1 = getX();
-	while (1) {
-		sum += temp1;
-		temp1++;
-		if (temp1 == getY() + 1)
-			break;
-	}
-	return sum;
-};
