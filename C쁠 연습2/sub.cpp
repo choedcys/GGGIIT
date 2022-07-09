@@ -1,83 +1,40 @@
-//18-6,7,8
-#include<iostream>
+//18-10
+#include <iostream>
 #include"header.h"
 using namespace std;
 
-Shape::Shape(string temp1 = "", int temp2 = 0, int temp3 = 0, int temp4 =0, int temp5=0) {
-	name = temp1;
-	width = temp2;
-	height = temp3;
-	x = temp4;
-	y = temp5;
-}
-string Shape:: getName() { return name; }
-void Shape::move(int temp1, int temp2) {
-	x += temp1;
-	y += temp2;
-}
-void Shape::setOrigin(int temp1, int temp2) {
+Shape::Shape(double temp1=0, double temp2=0, double temp3=0) {
 	x = temp1;
 	y = temp2;
-}
-void Shape::setWidth(int temp) {
-	width = temp;
-}
-void Shape::setHeight(int temp) {
-	height = temp;
+	z = temp3;
 }
 
-
-Oval::Oval(string temp1, int temp2, int temp3,int temp4, int temp5) :Shape(temp1,temp2,temp3,temp4,temp5) {}
-double Oval::getArea() {
-	return (width - height)*(width-height)*3.14;
-}
-void Oval::draw() {
-	int temp1 = 2, temp2 = 1;
-	cout << name << "Draw" << endl;
-	cout << "시작점: (" << x<<"," << y << ")"<<endl;
-	cout << "면적: " << getArea()<<endl;
-	cout << "이동점: (" << temp1 << "," << temp2 << ")"<<endl;
-	move(temp1, temp2);
-	cout << "최종점: (" << x << "," << y << ")"<<endl;
-}
-Shape* Oval:: createShape() {
-	return this;
+Ellipse::Ellipse(double temp=0) :Shape(temp, 0, 0),area(temp* temp * 3.14) {}
+void Ellipse::show() {
+	cout << "타원" << endl << "면적: " << area<<endl;
 }
 
-Rect::Rect(string temp1, int temp2, int temp3, int temp4, int temp5) :Shape(temp1, temp2, temp3, temp4, temp5) {
-
-}
-double Rect::getArea() {
-	return width * height;
-}
-void Rect::draw() {
-	int temp1 = 2, temp2 = 1;
-	cout << name << "Draw" << endl;
-	cout << "시작점: (" << x << "," << y << ")" << endl;
-	cout << "면적: " << getArea() << endl;
-	cout << "이동점: (" << temp1 << "," << temp2 << ")" << endl;
-	move(temp1, temp2);
-	cout << "최종점: (" << x << "," << y << ")" << endl;
-}
-Shape* Rect::createShape() {
-	return this;
+Rectangle::Rectangle(double temp1 = 0, double temp2 = 0):Shape(temp1,temp2,0),area(temp1*temp2) {}
+void Rectangle::show() {
+	cout << "직사각형" << endl <<"면적: " << area<<endl;
 }
 
-Tria::Tria(string temp1, int temp2, int temp3, int temp4, int temp5) :Shape(temp1, temp2, temp3, temp4, temp5) {
+Triangle::Triangle(double temp1 = 0, double temp2 = 0) :Shape(temp1, temp2, 0),area(temp1*temp2*0.5) {}
+void Triangle::show() {
+	cout << "삼각형" << endl <<"면적: "<< area << endl;
+}
 
+Sphere::Sphere(double temp = 0) :Shape(temp, 0, 0),vol(0.75*temp*temp*temp*3.14) {}
+void Sphere::show() {
+	cout << "구" << endl <<"체적: " << vol << endl;
 }
-double Tria::getArea() { 
-	return 0.5 * width * height;
+
+Cube::Cube(double temp1 = 0, double temp2 = 0, double temp3 = 0):Shape(temp1,temp2,temp3),vol(temp1*temp2*temp3) {}
+void Cube::show() {
+	cout << "직육면체" << endl << "체적: " << vol << endl;
 }
-void Tria::draw() {
-	int temp1 = 2, temp2 = 1;
-	cout << name << "Draw" << endl;
-	cout << "시작점: (" << x << "," << y << ")"<<endl;
-	cout << "면적: " << getArea() << endl;
-	cout << "이동점: (" << temp1 << "," << temp2 << ")" << endl;
-	move(temp1, temp2);
-	cout << "최종점: (" << x << "," << y << ")" << endl;
-}
-Shape* Tria::createShape() {
-	return this;
+
+Cylinder::Cylinder(double temp1 = 0, double temp2 = 0) :Shape(temp1, temp2, 0),vol(temp1*temp1*3.14*temp2) {}
+void Cylinder::show() {
+	cout << "원기둥" << endl << "체적: " << vol << endl;
 }

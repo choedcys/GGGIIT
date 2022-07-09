@@ -1,42 +1,45 @@
-//18-6,7,8
-#include<iostream>
-using namespace std;
-
+//18-10
 class Shape {
 protected:
-	string name;
-	int width, height;
-	int x, y;
+	double x, y, z;
 public:
-	Shape(string temp1, int temp2, int temp3, int temp4, int temp5);
-	virtual double getArea()=0;
-	string getName();
-	virtual void draw()=0;
-	void move(int temp1, int temp2);
-	void setOrigin(int temp1, int temp2);
-	void setWidth(int temp);
-	void setHeight(int temp);
-	virtual Shape* createShape() = 0;
+	Shape(double temp1, double temp2, double temp3);
+	virtual void show()=0;
 };
 
-class Oval : public Shape{
+class Ellipse : public Shape{
+	double area;
 public:
-	Oval(string temp1, int temp2, int temp3, int temp4, int temp5);
-	double getArea();
-	void draw();
-	Shape* createShape();
+	Ellipse(double temp);
+	void show();
 };
-class Rect : public Shape {
+class Rectangle : public Shape {
+	double area;
 public:
-	Rect(string temp1, int temp2, int temp3, int temp4, int temp5);
-	double getArea();
-	void draw();
-	Shape* createShape();
+	Rectangle(double temp1, double temp2);
+	void show();
 };
-class Tria : public Shape {
+class Triangle : public Shape {
+	double area;
 public:
-	Tria(string temp1, int temp2, int temp3, int temp4, int temp5);
-	double getArea();
-	void draw();
-	Shape* createShape();
+	Triangle(double temp1, double temp2);
+	void show();
+};
+class Sphere : public Shape {
+	double vol;
+public:
+	Sphere(double temp);
+	void show();
+};
+class Cube : public Shape {
+	double vol;
+public:
+	Cube(double temp1, double temp2, double temp3);
+	void show();
+};
+class Cylinder : public Shape {
+	double vol;
+public:
+	Cylinder(double temp1, double temp2);
+	void show();
 };
