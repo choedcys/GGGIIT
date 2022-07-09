@@ -1,3 +1,4 @@
+//18-6,7,8
 #include<iostream>
 #include"header.h"
 using namespace std;
@@ -14,6 +15,16 @@ void Shape::move(int temp1, int temp2) {
 	x += temp1;
 	y += temp2;
 }
+void Shape::setOrigin(int temp1, int temp2) {
+	x = temp1;
+	y = temp2;
+}
+void Shape::setWidth(int temp) {
+	width = temp;
+}
+void Shape::setHeight(int temp) {
+	height = temp;
+}
 
 
 Oval::Oval(string temp1, int temp2, int temp3,int temp4, int temp5) :Shape(temp1,temp2,temp3,temp4,temp5) {}
@@ -28,6 +39,9 @@ void Oval::draw() {
 	cout << "이동점: (" << temp1 << "," << temp2 << ")"<<endl;
 	move(temp1, temp2);
 	cout << "최종점: (" << x << "," << y << ")"<<endl;
+}
+Shape* Oval:: createShape() {
+	return this;
 }
 
 Rect::Rect(string temp1, int temp2, int temp3, int temp4, int temp5) :Shape(temp1, temp2, temp3, temp4, temp5) {
@@ -45,6 +59,9 @@ void Rect::draw() {
 	move(temp1, temp2);
 	cout << "최종점: (" << x << "," << y << ")" << endl;
 }
+Shape* Rect::createShape() {
+	return this;
+}
 
 Tria::Tria(string temp1, int temp2, int temp3, int temp4, int temp5) :Shape(temp1, temp2, temp3, temp4, temp5) {
 
@@ -60,4 +77,7 @@ void Tria::draw() {
 	cout << "이동점: (" << temp1 << "," << temp2 << ")" << endl;
 	move(temp1, temp2);
 	cout << "최종점: (" << x << "," << y << ")" << endl;
+}
+Shape* Tria::createShape() {
+	return this;
 }
