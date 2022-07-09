@@ -1,22 +1,63 @@
-//18-4
 #include<iostream>
-#include<iomanip>
 #include"header.h"
 using namespace std;
-TV::TV(string temp1, int temp2, int temp3, string temp4) {
+
+Shape::Shape(string temp1 = "", int temp2 = 0, int temp3 = 0, int temp4 =0, int temp5=0) {
 	name = temp1;
-	size = temp2;
-	pr = temp3;
-	mk = temp4;
+	width = temp2;
+	height = temp3;
+	x = temp4;
+	y = temp5;
 }
-void TV::title() {
-	cout << name << setw(5) << size << setw(10)<< pr << setw(10) << mk<<endl;
+string Shape:: getName() { return name; }
+void Shape::move(int temp1, int temp2) {
+	x += temp1;
+	y += temp2;
 }
-Refgr::Refgr(string temp1, int temp2, string temp3) {
-	name = temp1;
-	pr = temp2;
-	mk = temp3;
+
+
+Oval::Oval(string temp1, int temp2, int temp3,int temp4, int temp5) :Shape(temp1,temp2,temp3,temp4,temp5) {}
+double Oval::getArea() {
+	return (width - height)*(width-height)*3.14;
 }
-void Refgr::title() {
-	cout << name << setw(5) << "   " << setw(10) << pr << setw(10) << mk << endl;
+void Oval::draw() {
+	int temp1 = 2, temp2 = 1;
+	cout << name << "Draw" << endl;
+	cout << "시작점: (" << x<<"," << y << ")"<<endl;
+	cout << "면적: " << getArea()<<endl;
+	cout << "이동점: (" << temp1 << "," << temp2 << ")"<<endl;
+	move(temp1, temp2);
+	cout << "최종점: (" << x << "," << y << ")"<<endl;
+}
+
+Rect::Rect(string temp1, int temp2, int temp3, int temp4, int temp5) :Shape(temp1, temp2, temp3, temp4, temp5) {
+
+}
+double Rect::getArea() {
+	return width * height;
+}
+void Rect::draw() {
+	int temp1 = 2, temp2 = 1;
+	cout << name << "Draw" << endl;
+	cout << "시작점: (" << x << "," << y << ")" << endl;
+	cout << "면적: " << getArea() << endl;
+	cout << "이동점: (" << temp1 << "," << temp2 << ")" << endl;
+	move(temp1, temp2);
+	cout << "최종점: (" << x << "," << y << ")" << endl;
+}
+
+Tria::Tria(string temp1, int temp2, int temp3, int temp4, int temp5) :Shape(temp1, temp2, temp3, temp4, temp5) {
+
+}
+double Tria::getArea() { 
+	return 0.5 * width * height;
+}
+void Tria::draw() {
+	int temp1 = 2, temp2 = 1;
+	cout << name << "Draw" << endl;
+	cout << "시작점: (" << x << "," << y << ")"<<endl;
+	cout << "면적: " << getArea() << endl;
+	cout << "이동점: (" << temp1 << "," << temp2 << ")" << endl;
+	move(temp1, temp2);
+	cout << "최종점: (" << x << "," << y << ")" << endl;
 }

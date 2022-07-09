@@ -1,53 +1,35 @@
 //18-6
-//#include<iostream>
-//using namespace std;
-//
-//class Shape {
-//protected:
-//	string name; // 도형의 이름 
-//	int width, height; //도형에 내접하는 사각형의 너비와 높이
-//public:
-//	Shape(string n = "", int w = 0, int h = 0) {
-//		name = n;
-//		width = w;
-//		height = h;
-//	}
-//	virtual double getArea() { return 0; }
-//	string getName() { return name; }
-//};
-//
-//class Oval : public Shape{
-//
-//};
-//class Rect : public Shape {
-//
-//};
-//class Tria : public Shape {
-//
-//};
-
-
-//18-4
 #include<iostream>
 using namespace std;
 
-class HomeApp {
+class Shape {
 protected:
-	int pr;
 	string name;
-	string mk;
+	int width, height;
+	int x, y;
 public:
-	virtual void title() = 0;
+	Shape(string temp1, int temp2, int temp3, int temp4, int temp5);
+	virtual double getArea() = 0;
+	string getName();
+	virtual void draw()=0;
+	void move(int temp1, int temp2);
 };
 
-class TV :public HomeApp{
-	int size;
+class Oval : public Shape{
 public:
-	TV(string temp1, int temp2, int temp3, string temp4);
-	void title();
+	Oval(string temp1, int temp2, int temp3, int temp4, int temp5);
+	double getArea();
+	void draw();
 };
-class Refgr :public HomeApp{
+class Rect : public Shape {
 public:
-	Refgr(string temp1, int temp2, string temp3);
-	void title();
+	Rect(string temp1, int temp2, int temp3, int temp4, int temp5);
+	double getArea();
+	void draw();
+};
+class Tria : public Shape {
+public:
+	Tria(string temp1, int temp2, int temp3, int temp4, int temp5);
+	double getArea();
+	void draw();
 };
