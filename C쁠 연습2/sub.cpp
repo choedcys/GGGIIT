@@ -1,40 +1,19 @@
-//18-10
-#include <iostream>
+//18-12
+#include<iostream>
 #include"header.h"
 using namespace std;
 
-Shape::Shape(double temp1=0, double temp2=0, double temp3=0) {
-	x = temp1;
-	y = temp2;
-	z = temp3;
+Calculator::Calculator(){}
+GoodCalc::GoodCalc(){}
+int GoodCalc::add(int a, int b) {
+	return a + b;
 }
-
-Ellipse::Ellipse(double temp=0) :Shape(temp, 0, 0),area(temp* temp * 3.14) {}
-void Ellipse::show() {
-	cout << "타원" << endl << "면적: " << area<<endl;
+int GoodCalc::subtract(int a, int b) {
+	return a - b;
 }
-
-Rectangle::Rectangle(double temp1 = 0, double temp2 = 0):Shape(temp1,temp2,0),area(temp1*temp2) {}
-void Rectangle::show() {
-	cout << "직사각형" << endl <<"면적: " << area<<endl;
-}
-
-Triangle::Triangle(double temp1 = 0, double temp2 = 0) :Shape(temp1, temp2, 0),area(temp1*temp2*0.5) {}
-void Triangle::show() {
-	cout << "삼각형" << endl <<"면적: "<< area << endl;
-}
-
-Sphere::Sphere(double temp = 0) :Shape(temp, 0, 0),vol(0.75*temp*temp*temp*3.14) {}
-void Sphere::show() {
-	cout << "구" << endl <<"체적: " << vol << endl;
-}
-
-Cube::Cube(double temp1 = 0, double temp2 = 0, double temp3 = 0):Shape(temp1,temp2,temp3),vol(temp1*temp2*temp3) {}
-void Cube::show() {
-	cout << "직육면체" << endl << "체적: " << vol << endl;
-}
-
-Cylinder::Cylinder(double temp1 = 0, double temp2 = 0) :Shape(temp1, temp2, 0),vol(temp1*temp1*3.14*temp2) {}
-void Cylinder::show() {
-	cout << "원기둥" << endl << "체적: " << vol << endl;
+double GoodCalc::average(int a[], int size) {
+	for (int i = 0; i < size-1; i++) {
+		a[0] += a[i+1];
+	}
+	return a[0];
 }
