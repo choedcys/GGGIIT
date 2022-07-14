@@ -15,6 +15,8 @@ public:
 	virtual int tot()=0;
 	virtual double avg() = 0;
 	int kor();
+	int getrank();
+	void setrank(int temp);
 };
 
 class Society :public Evaluation {
@@ -48,5 +50,5 @@ public:
 	void input();
 	void one();
 	void all();
-	int* rank(Evaluation *temp[10]);
+	void rank(Evaluation *temp[10], int p);
 };

@@ -12,6 +12,12 @@ int Evaluation::getnum() {
 string Evaluation::getname() {
 	return name;
 }
+int Evaluation::getrank() {
+	return rank;
+}
+void Evaluation::setrank(int temp) {
+	rank = temp;
+}
 
 Society::Society() {}
 void Society::setval(int temp1, string temp2, int temp3, int temp4, int temp5, int temp6, int temp7){
@@ -114,7 +120,6 @@ void Ctrl::one() {
 
 
 void Ctrl::all() {
-	int* list = rank(arr);
 	cout << "성적표" << endl;
 	cout << "===============================================================================================" << endl;
 	cout << "번호" << setw(10) << "이름" << setw(10) << "국어" << setw(10) << "영어" << setw(10) << "수학";
@@ -122,25 +127,21 @@ void Ctrl::all() {
 	cout << "===============================================================================================" << endl;
 	for (int i = 0; i < cnt; i++) {
 		arr[i]->disp();
-		cout << setw(10)<<list[i]<<endl;
+		rank(arr, i);
+		cout << setw(10) << arr[i]->getrank() << endl;
 	}
 }
 
-int* Ctrl::rank(Evaluation *temp[10]) {
+void Ctrl::rank(Evaluation *temp[10], int p) {
 	int r = 1;
-	int* rank = new int[cnt];
-	for (int i = 0; i < cnt; i++) {
-		for (int j = 0; j < cnt; j++) {
-			if (temp[i]->avg() < temp[j]->avg()) {
-				r++;
-			}
-			
+	for (int row = 0; row < cnt; row++) {
+		if (temp[p]->avg() < temp[row]->avg()) {
+			r++;
 		}
-		rank[i] = r;
-		r = 1;
 	}
-	return rank;
+	temp[p]->setrank(r);
 }
+
 int Evaluation::kor() {
 	return korean;
 }
