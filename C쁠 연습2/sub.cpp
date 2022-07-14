@@ -30,7 +30,7 @@ void Society::indiv() {
 }
 void Society::disp() {
 	cout << num << setw(13) << name << setw(10) << korean << setw(10) << english << setw(10) << mathmatics << setw(10);
-	cout << setw(20) << society << setw(10) << history << setw(10) << tot() << setw(10) << tot() / 5;
+	cout << setw(20) << society << setw(10) << history << setw(10) << tot() << setw(10) << avg();
 }
 int Society::tot() {
 	return korean + english + mathmatics + society + history;
@@ -58,7 +58,7 @@ int Science::tot() {
 }
 void Science::disp() {
 	cout << num << setw(13) << name << setw(10) << korean << setw(10) << english << setw(10) << mathmatics << setw(10);
-	cout << science << setw(30) << tot() << setw(10) << tot() / 5;
+	cout << science << setw(30) << tot() << setw(10) << avg();
 }
 double Science:: avg() {
 	return tot() / 4.0;
@@ -102,12 +102,19 @@ void Ctrl::one() {
 	cout << "번호: ";
 	cin >> key;
 	cout << "이름: ";
+	cin.get();
 	getline(cin, name);
-
+	for (int i = 0; i < cnt; i++) {
+		if (arr[i]->getname() == name && arr[i]->getnum()) {
+			arr[i]->indiv();
+			break;
+		}
+	}
 }
 
+
 void Ctrl::all() {
-	//int* list = rank(*arr);
+	int* list = rank(arr);
 	cout << "성적표" << endl;
 	cout << "===============================================================================================" << endl;
 	cout << "번호" << setw(10) << "이름" << setw(10) << "국어" << setw(10) << "영어" << setw(10) << "수학";
@@ -115,21 +122,22 @@ void Ctrl::all() {
 	cout << "===============================================================================================" << endl;
 	for (int i = 0; i < cnt; i++) {
 		arr[i]->disp();
-		//cout << setw(10)<<list[i]<<endl;
+		cout << setw(10)<<list[i]<<endl;
 	}
 }
 
-int* Ctrl::rank(Evaluation *temp) {
+int* Ctrl::rank(Evaluation *temp[10]) {
 	int r = 1;
 	int* rank = new int[cnt];
 	for (int i = 0; i < cnt; i++) {
-		cout <<endl<< temp[i].kor() << " " << temp[i].tot() << endl;
-		for (int j = 0; j < i; i++) {
-			if (temp[i].avg() < temp[j].avg()) {
+		for (int j = 0; j < cnt; j++) {
+			if (temp[i]->avg() < temp[j]->avg()) {
 				r++;
 			}
-			rank[i] = r;
+			
 		}
+		rank[i] = r;
+		r = 1;
 	}
 	return rank;
 }

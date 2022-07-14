@@ -48,5 +48,5 @@ public:
 	void input();
 	void one();
 	void all();
-	int* rank(Evaluation* temp);
+	int* rank(Evaluation *temp[10]);
 };
