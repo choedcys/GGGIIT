@@ -14,11 +14,12 @@ int main() {
 		}
 		if (N % K == 0) {
 			N /= K;
+			cnt++;
 		}
 		else {
-			N--;
+			cnt += N % K;
+			N -= N%K;
 		}
-		cnt++;
 	}
 	cout << cnt;
 }
