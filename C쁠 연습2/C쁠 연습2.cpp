@@ -1,20 +1,14 @@
-#include <iostream>
-#include "header.h"
+#include<iostream>
+#include"header.h"
 using namespace std;
 
-int main()
+void main()
 {
-	using std::cout;
-	using std::endl;
-	Time aida(3, 35);
-	Time tosca(2, 48);
-	Time temp;
-	cout << "Aida ¿Í Tosca:\n";
-	cout << aida << "; " << tosca << endl;
-	temp = aida + tosca; // operator+()
-	cout << "Aida + Tosca: " << temp << endl;
-	temp = aida * 1.17; // ¸â¹ö operator*()
-	cout << "Aida * 1.17: " << temp << endl;
-	cout << "10.0 * Tosca: " << 10.0 * tosca << endl;
-	return 0;
+	Time a(5, 50), b(3, 30), c(1,2);
+	c = a + b;
+	cout <<"a: " << a;
+	cout << "b: " << b;
+	cout << "c: " << c;
+	a++;
+	cout << "a: " << a;
 }
