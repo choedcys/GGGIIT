@@ -1,25 +1,20 @@
-#include<iostream>
+#include <iostream>
+#include "header.h"
 using namespace std;
 
-int main() {
-	int N, K,num,cnt=0;
-	cout << "피제수 입력: ";
-	cin >> N;
-	cout << "제수 입력: ";
-	cin >> K;
-	while (1) {
-		if (N / K == 0) {
-			cnt+=N%K-1;
-			break;
-		}
-		if (N % K == 0) {
-			N /= K;
-			cnt++;
-		}
-		else {
-			cnt += N % K;
-			N -= N%K;
-		}
-	}
-	cout << cnt;
+int main()
+{
+	using std::cout;
+	using std::endl;
+	Time aida(3, 35);
+	Time tosca(2, 48);
+	Time temp;
+	cout << "Aida 와 Tosca:\n";
+	cout << aida << "; " << tosca << endl;
+	temp = aida + tosca; // operator+()
+	cout << "Aida + Tosca: " << temp << endl;
+	temp = aida * 1.17; // 멤버 operator*()
+	cout << "Aida * 1.17: " << temp << endl;
+	cout << "10.0 * Tosca: " << 10.0 * tosca << endl;
+	return 0;
 }
