@@ -1,13 +1,16 @@
 #include<iostream>
 using namespace std;
-class Point {
+
+class MyString {
 private:
-	int xpos, ypos;
+	char* str;
+	int len;
 public:
-	Point();
-	Point(int temp1, int temp2);
-	friend ostream& operator<<(ostream& os, Point t);
-	friend istream& operator>>(istream& is, Point &t);
+	MyString();
+	MyString(MyString& br);
+	~MyString();
+	MyString& operator+(MyString& br);
+	bool operator>(MyString& br);
+	friend ostream& operator<<(ostream& os, MyString& temp);
+	friend istream& operator>>(istream& is, MyString& temp);
 };
-
-

@@ -2,17 +2,36 @@
 #include"header.h"
 using namespace std;
 
-Point::Point():xpos(0),ypos(0) {}
-Point::Point(int temp1 = 0, int temp2 = 0) {
-	xpos = temp1;
-	ypos = temp2;
-}
-ostream& operator<<(ostream& os, Point t) {
-	os << "[" << t.xpos << ", " << t.ypos << "]" << endl;
-	return os;
+MyString::MyString(){
+	str = NULL;
 }
 
-istream& operator>>(istream& is, Point &t) {
-	is >>t.xpos >> t.ypos;
+MyString::MyString(MyString& br){}
+MyString::~MyString(){}
+MyString& MyString::operator+(MyString& br){
+	strcat(this->str, br.str);
+	this->len += br.len;
+	return *this;
+}
+bool MyString::operator>(MyString& br){
+	cout << "첫 번째와 두 번째 중 긴 과일이름: ";
+	if (this->len > br.len) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+ostream& operator<<(ostream& os, MyString& temp){
+	os << temp.str <<"("<<temp.len<<")"<< endl;
+	return os;
+}
+istream& operator>>(istream& is, MyString& temp){
+	char buffer[50];
+	is >> buffer;
+	temp.str = new char[strlen(buffer) + 1];
+	strcpy(temp.str, buffer);
+	temp.len = strlen(temp.str);
 	return is;
 }
