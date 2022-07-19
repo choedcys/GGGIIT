@@ -1,12 +1,13 @@
 #include<iostream>
 using namespace std;
-
-class Time {
-	int h, m;
+class Point {
+private:
+	int xpos, ypos;
 public:
-
-	Time(int temp1, int temp2);
-	Time operator+(Time temp);
-	Time operator++(int n);
-	friend std::ostream& operator<<(ostream& os, Time temp);
+	Point();
+	Point(int temp1, int temp2);
+	friend ostream& operator<<(ostream& os, Point t);
+	friend istream& operator>>(istream& is, Point &t);
 };
+
+

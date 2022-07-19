@@ -2,25 +2,17 @@
 #include"header.h"
 using namespace std;
 
-Time::Time(int temp1=0, int temp2=0) : h(temp1), m(temp2) {}
-Time Time::operator+(Time temp) {
-	temp.h += this->h;
-	temp.m += this->m;
-	if (temp.m >= 60) {
-		temp.m -= 60;
-		temp.h++;
-	}
-	return temp;
+Point::Point():xpos(0),ypos(0) {}
+Point::Point(int temp1 = 0, int temp2 = 0) {
+	xpos = temp1;
+	ypos = temp2;
 }
-Time Time::operator++(int n) {
-	this->m++;
-	if (this->m >= 60) {
-		this->m -= 60;
-		this->h++;
-	}
-	return *this;
-}
-std::ostream& operator<<(ostream& os, Time temp) {
-	os << ": " << temp.h << "½Ã°£ " << temp.m << "ºĞ" << endl;
+ostream& operator<<(ostream& os, Point t) {
+	os << "[" << t.xpos << ", " << t.ypos << "]" << endl;
 	return os;
+}
+
+istream& operator>>(istream& is, Point &t) {
+	is >>t.xpos >> t.ypos;
+	return is;
 }
