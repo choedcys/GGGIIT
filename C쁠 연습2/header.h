@@ -1,14 +1,23 @@
 #include<iostream>
 using namespace std;
-class Time {
+class Charity {
 private:
-	int h, m;
+	string name;
+	int money;
+	int donate;
 public:
-	Time();
-	Time(int temp1, int temp2);
-	friend Time& operator+(Time&temp1, double temp2);
-	friend Time& operator+(double temp1, Time& temp2);
-	friend Time operator+(Time& temp1, Time& temp2);
-	friend ostream& operator<<(ostream& os, Time& temp);
-	friend istream& operator>>(istream& is, Time& temp);
+	Charity();
+	Charity(string temp1, int temp2);
+	void setdonate(int temp);
+	string getname();
+	int getmoney();
+	int getdonate();
+};
+
+class Ctrl {
+	Charity *arr[2];
+public:
+	Ctrl();
+	int Give();
+	friend ostream& operator<<(ostream& os, Ctrl temp);
 };
