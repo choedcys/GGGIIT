@@ -31,7 +31,7 @@ Time& operator+(double temp1, Time& temp2) {
 	}
 	return temp2;
 }
-Time& operator+(Time& temp1, Time& temp2) {
+Time operator+(Time& temp1, Time& temp2) {
 	Time res;
 	res.h = temp1.h + temp2.h;
 	res.m = temp1.m + temp2.m;
