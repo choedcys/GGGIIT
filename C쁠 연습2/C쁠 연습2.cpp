@@ -3,23 +3,13 @@
 using namespace std;
 
 int main() {
-	San array[5];
-	San temp;
-	for (int i = 0; i < 5; i++) {
-		cin >> array[i];
-	}
-	cout << "높이 순으로 출력함"<<endl;
-
-	for (int row = 0; row < 5; row++) {
-		for (int col = row; col < 5; col++) {
-			if (array[row].getheight() < array[col].getheight()) {
-				temp = array[row];
-				array[row] = array[col];
-				array[col] = temp;
-			}
-		}
-	}
-	for (int i = 0; i < 5; i++) {
-		cout << array[i];
-	}
+	Time a, b(3, 45);
+	cout << "# a의 시간 입력 : ";
+	cin >> a;
+	Time temp = a + b;
+	cout << "a의 시간 => " << a << endl;
+	cout << "b의 시간 => " << b << endl;
+	cout << "a + b => " << temp << endl;
+	cout << "a + 1.5 => " << a + 1.5 << endl;
+	cout << "1.5 + b => " << 1.5 + b << endl;
 }

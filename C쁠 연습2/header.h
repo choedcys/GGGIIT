@@ -1,15 +1,14 @@
 #include<iostream>
 using namespace std;
-class San {
+class Time {
 private:
-	char* name;
-	int height;
+	int h, m;
 public:
-	San();
-	~San();
-	San& operator=(const San& br);
-	char* getname();
-	friend istream& operator>>(istream& is, San& temp);
-	friend ostream& operator<<(ostream& os, San& temp);
-	int getheight();
+	Time();
+	Time(int temp1, int temp2);
+	friend Time& operator+(Time&temp1, double temp2);
+	friend Time& operator+(double temp1, Time& temp2);
+	friend Time& operator+(Time& temp1, Time& temp2);
+	friend ostream& operator<<(ostream& os, Time& temp);
+	friend istream& operator>>(istream& is, Time& temp);
 };

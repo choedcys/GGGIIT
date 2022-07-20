@@ -2,44 +2,42 @@
 #include"header.h"
 using namespace std;
 
-San::San() {
-	this->name = new char[2];
-	this->height = 0;
-}
-San& San::operator=(const San& br) {
-	this->name = new char[strlen(br.name) + 1];
-	strcpy(name, br.name);
-	this->height = br.height;
-	return *this;
-}
+Time::Time():h(0),m(0) {}
+Time::Time(int temp1, int temp2):h(temp1),m(temp2){}
 
-San::~San() {
-	cout << name << "소멸자" << endl;
-	delete[]name;
+ostream& operator<<(ostream& os, Time& temp) {
+	os << temp.h << "시간 " << temp.m << "분" << endl;
+	return os;
 }
-char* San::getname() {
-	return name;
-}
-int San::getheight() {
-	return height;
-}
-
-
-
-
-istream& operator>>(istream& is, San& temp) {
-	char name[50];
-	int height;
-	cout << "이름: ";
-	is >> name;
-	temp.name = new char[strlen(name) + 1];
-	strcpy(temp.name, name);
-	cout << "높이: ";
-	is >> height;
-	temp.height = height;
+istream& operator>>(istream& is, Time& temp) {
+	is >> temp.h >> temp.m;
 	return is;
 }
-ostream& operator<<(ostream& os, San& temp) {
-	os << "이름: " << temp.name << endl << "높이: " << temp.height << endl;
-	return os;
+Time& operator+(Time&temp1, double temp2) {
+	temp1.h += int(temp2);
+	temp1.m += (temp2 - int(temp2)) * 60;
+	if (temp1.m >= 60) {
+		temp1.h++;
+		temp1.m -= 60;
+	}
+	return temp1;
+}
+Time& operator+(double temp1, Time& temp2) {
+	temp2.h += int(temp1);
+	temp2.m += (temp1 - int(temp1)) * 60;
+	if (temp2.m >= 60) {
+		temp2.h++;
+		temp2.m -= 60;
+	}
+	return temp2;
+}
+Time& operator+(Time& temp1, Time& temp2) {
+	Time res;
+	res.h = temp1.h + temp2.h;
+	res.m = temp1.m + temp2.m;
+	if (res.m >= 60) {
+		res.h++;
+		res.m -= 60;
+	}
+	return res;
 }
