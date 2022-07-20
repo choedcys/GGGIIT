@@ -2,36 +2,44 @@
 #include"header.h"
 using namespace std;
 
-MyString::MyString(){
-	str = NULL;
+San::San() {
+	this->name = new char[2];
+	this->height = 0;
 }
-
-MyString::MyString(MyString& br){}
-MyString::~MyString(){}
-MyString& MyString::operator+(MyString& br){
-	strcat(this->str, br.str);
-	this->len += br.len;
+San& San::operator=(const San& br) {
+	this->name = new char[strlen(br.name) + 1];
+	strcpy(name, br.name);
+	this->height = br.height;
 	return *this;
 }
-bool MyString::operator>(MyString& br){
-	cout << "첫 번째와 두 번째 중 긴 과일이름: ";
-	if (this->len > br.len) {
-		return true;
-	}
-	else {
-		return false;
-	}
+
+San::~San() {
+	cout << name << "소멸자" << endl;
+	delete[]name;
+}
+char* San::getname() {
+	return name;
+}
+int San::getheight() {
+	return height;
 }
 
-ostream& operator<<(ostream& os, MyString& temp){
-	os << temp.str <<"("<<temp.len<<")"<< endl;
-	return os;
-}
-istream& operator>>(istream& is, MyString& temp){
-	char buffer[50];
-	is >> buffer;
-	temp.str = new char[strlen(buffer) + 1];
-	strcpy(temp.str, buffer);
-	temp.len = strlen(temp.str);
+
+
+
+istream& operator>>(istream& is, San& temp) {
+	char name[50];
+	int height;
+	cout << "이름: ";
+	is >> name;
+	temp.name = new char[strlen(name) + 1];
+	strcpy(temp.name, name);
+	cout << "높이: ";
+	is >> height;
+	temp.height = height;
 	return is;
+}
+ostream& operator<<(ostream& os, San& temp) {
+	os << "이름: " << temp.name << endl << "높이: " << temp.height << endl;
+	return os;
 }

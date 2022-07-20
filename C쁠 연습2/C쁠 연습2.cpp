@@ -3,21 +3,23 @@
 using namespace std;
 
 int main() {
-	MyString array[5];
-	cout << "과일 입력: ";
+	San array[5];
+	San temp;
 	for (int i = 0; i < 5; i++) {
-		cin>>array[i];
+		cin >> array[i];
 	}
-	if (array[0] > array[1]) {
-		cout << array[0] << endl;
+	cout << "높이 순으로 출력함"<<endl;
+
+	for (int row = 0; row < 5; row++) {
+		for (int col = row; col < 5; col++) {
+			if (array[row].getheight() < array[col].getheight()) {
+				temp = array[row];
+				array[row] = array[col];
+				array[col] = temp;
+			}
+		}
 	}
-	else {
-		cout << array[1]<< endl;
-	}
-	cout << "모든 문자열 출력: " << endl;
-	array[0] = array[0] + array[1] + array[2] + array[3] + array[4];
 	for (int i = 0; i < 5; i++) {
 		cout << array[i];
 	}
-	
 }

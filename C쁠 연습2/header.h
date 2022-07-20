@@ -1,16 +1,15 @@
 #include<iostream>
 using namespace std;
-
-class MyString {
+class San {
 private:
-	char* str;
-	int len;
+	char* name;
+	int height;
 public:
-	MyString();
-	MyString(MyString& br);
-	~MyString();
-	MyString& operator+(MyString& br);
-	bool operator>(MyString& br);
-	friend ostream& operator<<(ostream& os, MyString& temp);
-	friend istream& operator>>(istream& is, MyString& temp);
+	San();
+	~San();
+	San& operator=(const San& br);
+	char* getname();
+	friend istream& operator>>(istream& is, San& temp);
+	friend ostream& operator<<(ostream& os, San& temp);
+	int getheight();
 };
