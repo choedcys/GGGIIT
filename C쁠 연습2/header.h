@@ -1,13 +1,11 @@
-template<class T, class U>
-class Pair {
-	T first;
-	U second;
+#include<iostream>
+using namespace std;
+
+class Circle {
+	int radius;
 public:
-	Pair();
-	Pair(T temp1, U temp2);
-	void setfir(T temp);
-	void setsec(U temp);
-	T getfir();
-	U getsec();
+	Circle();
+	Circle(int temp);
+	int getRadius();
+	friend ostream& operator<<(ostream& os, Circle& temp);
 };
-#include"template sub.hpp"
