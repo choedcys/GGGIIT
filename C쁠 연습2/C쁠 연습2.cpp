@@ -2,22 +2,19 @@
 #include"header.h"
 using namespace std;
 
-template<typename T, typename U>
-void mcopy(T* temp1, U* temp2, int temp3) {
-	for (int i = 0; i < temp3; i++) {
-		temp2[i] = temp1[i];
+template<typename T>
+T biggest(T* temp1, int temp2) {
+	T res = temp1[0];
+	for (int i = 0; i < temp2; i++) {
+		if (res < temp1[i])
+			res = temp1[i];
 	}
+	return res;
 }
 
 int main() {
-	int x[5] = {1, 2, 3, 4, 5};
-	double d[5];
-	char c[5] = { 'H', 'e', 'l', 'l', 'o' }, e[5];
-	mcopy(x, d, 5); // int x[]의 원소 5개를 double d[]에 복사 
-	mcopy(c, e, 5); // char c[]의 원소 5개를 char e[]에 복사
-	for (int i = 0; i < 5; i++) cout << d[i] << ' '; // d[] 출력
-	cout << endl;
-	for (int i = 0; i < 5; i++) cout << e[i] << ' '; // e[] 출력
-	cout << endl;
-
+	int x[] = { 1, 10, 100, 5, 4 };
+	cout << biggest(x,5) << endl; // 5는배열x의크기
+	double y[] = { 6.4, 3.3, -200.6, 7.7, 8.8, 20.3 };
+	cout << biggest(y,6); // 6는배열y의크기
 }
