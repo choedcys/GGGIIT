@@ -1,28 +1,33 @@
 #include<iostream>
-#include"header.h"
 using namespace std;
-
-template<typename T,size_t N>
-void reverseArray(T (&temp)[N]) {
-	T tp;
-	for (int i = 0; i < N/2; i++) {
-		tp = temp[i];
-		temp[i] = temp[N - i - 1];
-		temp[N - i - 1] = tp;
+template<typename T>
+T* concat(T* temp1, int temp1size, T* temp2, int temp2size) {
+	T* res = new T[temp1size + temp2size];
+	int i;
+	for (i = 0; i < temp1size; i++) {
+		res[i] = temp1[i];
 	}
+	cout << endl;
+	for (  ; i < temp1size + temp2size; i++) {
+		res[i] = temp2[i-temp1size];
+	}
+	return res;
 }
 
 int main() {
-	int x[] = { 1,2,3,4,5 };
-	char y[] = "apple";
-	reverseArray(x);
-	reverseArray(y);
-	for (int i = 0; i < 5; i++) {
-		cout << x[i];
+	int x[] = { 1,2,3 };
+	int y[] = { 6,7,8,9 };
+	int* p = concat(x, 3, y, 4);
+	char a[] = { 'L', 'o', 'v', 'e' };
+	char b[] = { 'C', '+', '+' };
+	char* q = concat(a, 4, b, 3);
+	for (int i = 0; i < 7; i++) {
+		cout << p[i];
 	}
 	cout << endl;
-	for (int i = 0; i < 6; i++) {
-		cout << y[i];
+	for (int i = 0; i < 7; i++) {
+		cout << q[i];
 	}
 	cout << endl;
+
 }
