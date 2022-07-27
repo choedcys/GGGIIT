@@ -1,33 +1,48 @@
 #include<iostream>
+#include<random>
 using namespace std;
+
 template<typename T>
-T* concat(T* temp1, int temp1size, T* temp2, int temp2size) {
-	T* res = new T[temp1size + temp2size];
-	int i;
-	for (i = 0; i < temp1size; i++) {
-		res[i] = temp1[i];
+class List {
+	T arr[20];
+	int index = 0;
+public:
+	List(){}
+	T select(int rand) {
+		cout << rand<<" "<<rand % index;
+		return arr[rand% index];
 	}
-	cout << endl;
-	for (  ; i < temp1size + temp2size; i++) {
-		res[i] = temp2[i-temp1size];
+	void add(T temp) {
+		arr[index++] = temp;
+		cout << "남은 자리: " << (sizeof(arr) / 4) - index<<endl;
 	}
-	return res;
-}
+};
+
 
 int main() {
-	int x[] = { 1,2,3 };
-	int y[] = { 6,7,8,9 };
-	int* p = concat(x, 3, y, 4);
-	char a[] = { 'L', 'o', 'v', 'e' };
-	char b[] = { 'C', '+', '+' };
-	char* q = concat(a, 4, b, 3);
-	for (int i = 0; i < 7; i++) {
-		cout << p[i];
+	List<int> list;
+	int arr[9] = { 12,52,38,87,28,10 };
+	int rand;
+	random_device seed;
+	while (1) {
+		int key;
+		cout << "1.삽입" << endl << "2.출력" << endl << "==>";
+		cin >> key;
+		if (key == 1) {
+			cout << "원소 입력: ";
+			cin >> key;
+			list.add(key);
+		}
+		else if (key == 2) {
+			while (1) {
+				rand = seed();
+				if (rand > 0)
+					break;
+			}
+			cout << "랜덤출력 값: "<<list.select(rand)<<endl;
+		}
+		else {
+			cout << "잘못 입력" << endl;
+		}
 	}
-	cout << endl;
-	for (int i = 0; i < 7; i++) {
-		cout << q[i];
-	}
-	cout << endl;
-
 }
