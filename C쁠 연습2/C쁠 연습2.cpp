@@ -1,70 +1,46 @@
 #include<iostream>
-#include<random>
 using namespace std;
 
 template<typename T>
-class Queue {
-	T Q[4];
-	T no = NULL;
-	int r,f;
+class Node {
 public:
-	Queue():r(0),f(0){}
-	T peek() {
-		if(isempty() == false)
-			return Q[f];
-		else {
-			cout << "큐가 비어있음";
-			return no;
-		}
-	}
-	void enque(T temp) {
-		if (isfull() == false)
-			Q[r++] = temp;
-		else
-			cout << "꽉찬 큐"<<endl;
-	}
-	T deque() {
-		if (isempty() == false)
-			return Q[f++];
-		else {
-			cout << "큐가 비어있음";
-			return no;
-		}
-	}
-	bool isfull() {
-		if (f == (r + 1 )%4)
-			return true;
-		else
-			return false;
-	}
-	bool isempty() {
-		if (f==r)
-			return true;
-		else
-			return false;
-	}
+	T data;
+	Node<T>* next;
+	Node() {}
 };
 
 
+
+
 int main() {
-	Queue<int> q;
-	int key;
+	cout << "int:";
+	int num;
+	Node<int>* sp = NULL;
+	Node<int>* ep = NULL;
+	Node<int>* cp = NULL;
 	while (1) {
-		cout << "1. ENQUE\n2. DEQUE\n3.PEEK\n==>";
-		cin >> key;
-		if (key == 1) {
-			cout << "값 입력: ";
-			cin >> key;
-			q.enque(key);
+		cin >> num;
+		if (num == -1) {
+			break;
 		}
-		else if (key == 2) {
-			cout << q.deque()<<endl;
+		if (sp == NULL) {
+			sp = new Node<int>;
+			ep = sp;
 		}
-		else if (key == 3) {
-			cout << q.peek()<<endl;
+		else
+		{
+			ep->next = new Node<int>;
+			ep = ep->next;
 		}
-		else {
-			cout << "잘못된 입력"<<endl;
+		ep->data = num;
+		ep->next = NULL;
+	}
+	cp = sp;
+	while (1) {
+		if (cp == NULL) {
+			break;
 		}
+		cout << cp->data << endl;
+		cp = cp->next;
 	}
 }
