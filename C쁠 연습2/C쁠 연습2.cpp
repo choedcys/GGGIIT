@@ -3,46 +3,68 @@
 using namespace std;
 
 template<typename T>
-class List {
-	T arr[20];
-	int index = 0;
+class Queue {
+	T Q[4];
+	T no = NULL;
+	int r,f;
 public:
-	List(){}
-	T select(int rand) {
-		cout << rand<<" "<<rand % index;
-		return arr[rand% index];
+	Queue():r(0),f(0){}
+	T peek() {
+		if(isempty() == false)
+			return Q[f];
+		else {
+			cout << "큐가 비어있음";
+			return no;
+		}
 	}
-	void add(T temp) {
-		arr[index++] = temp;
-		cout << "남은 자리: " << (sizeof(arr) / 4) - index<<endl;
+	void enque(T temp) {
+		if (isfull() == false)
+			Q[r++] = temp;
+		else
+			cout << "꽉찬 큐"<<endl;
+	}
+	T deque() {
+		if (isempty() == false)
+			return Q[f++];
+		else {
+			cout << "큐가 비어있음";
+			return no;
+		}
+	}
+	bool isfull() {
+		if (f == (r + 1 )%4)
+			return true;
+		else
+			return false;
+	}
+	bool isempty() {
+		if (f==r)
+			return true;
+		else
+			return false;
 	}
 };
 
 
 int main() {
-	List<int> list;
-	int arr[9] = { 12,52,38,87,28,10 };
-	int rand;
-	random_device seed;
+	Queue<int> q;
+	int key;
 	while (1) {
-		int key;
-		cout << "1.삽입" << endl << "2.출력" << endl << "==>";
+		cout << "1. ENQUE\n2. DEQUE\n3.PEEK\n==>";
 		cin >> key;
 		if (key == 1) {
-			cout << "원소 입력: ";
+			cout << "값 입력: ";
 			cin >> key;
-			list.add(key);
+			q.enque(key);
 		}
 		else if (key == 2) {
-			while (1) {
-				rand = seed();
-				if (rand > 0)
-					break;
-			}
-			cout << "랜덤출력 값: "<<list.select(rand)<<endl;
+			cout << q.deque()<<endl;
+		}
+		else if (key == 3) {
+			cout << q.peek()<<endl;
 		}
 		else {
-			cout << "잘못 입력" << endl;
+			cout << "잘못된 입력"<<endl;
 		}
 	}
 }
