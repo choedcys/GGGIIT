@@ -1,7 +1,16 @@
-class newArr {
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+class IntArray {
+private:
 	int* arr;
-	int len;
+	int arrlen;
+	IntArray(const IntArray& arr) { }
+	IntArray& operator=(IntArray& arr) { }
 public:
-	newArr(int temp);
-	int& operator[](int temp);
+	IntArray(int temp);
+	int& operator[] (int temp);
+	int getArrLen();
+	~IntArray();
 };
