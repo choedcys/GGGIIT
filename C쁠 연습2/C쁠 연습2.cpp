@@ -3,16 +3,16 @@
 #include"header.h"
 using namespace std;
 
-void showAllData(IntArray& ref) {
-	int len = ref.getArrLen();
-	for (int idx = 0; idx < len; idx++)
-		cout << ref[idx] << endl;
-}
-
-int main(void)
-{
-	IntArray A(5);
-	for (int i = 0; i < 5; i++)
-		A[i] = (i + 1) * 11;
-	showAllData(A);
+int main() {
+	PointArray a(3);
+	a[0] = Point(3, 4);
+	a[1] = Point(5, 6);
+	a[2] = Point(7, 8);
+	int i = 0;
+	while (1) {
+		if (i == 3)
+			break;
+		cout << a[i] << endl;
+		i++;
+	}
 }

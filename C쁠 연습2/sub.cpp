@@ -3,19 +3,31 @@
 #include"header.h"
 using namespace std;
 
-IntArray::IntArray(int temp) :arrlen(temp) {
-	arr = new int[temp];
+Point::Point(int temp1 = 0, int temp2=0) {
+	x = temp1;
+	y = temp2;
 }
-int& IntArray:: operator[] (int idx) {
-	if (idx < 0 || idx >= arrlen) {
-		cout << "¹üÀ§¸¦¹þ¾î³µ½À´Ï´Ù" << endl;
+ostream& operator <<(ostream& os, Point& temp) {
+	os << '['<<temp.x <<','<<temp.y<<']';
+	return os;
+}
+
+
+PointArray::PointArray(int temp) {
+	len = temp;
+	arr = new Point[len];
+}
+
+Point& PointArray::operator[](int temp) {
+	if (temp < 0 || temp>len) {
+		cout << "¹üÀ§¸¦ ¹þ¾î³µ±º";
 		exit(1);
 	}
-	return arr[idx];
+	return arr[temp];
 }
-int IntArray:: getArrLen() {
-	return arrlen;
+int PointArray::getlen() {
+	return len;
 }
-IntArray::~IntArray() {
-	delete[]arr;
+PointArray::~PointArray() {
+	delete []arr;
 }

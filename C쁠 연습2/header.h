@@ -2,15 +2,19 @@
 #include <cstdlib>
 using namespace std;
 
-class IntArray {
-private:
-	int* arr;
-	int arrlen;
-	IntArray(const IntArray& arr) { }
-	IntArray& operator=(IntArray& arr) { }
+class Point{
+	int x, y;
 public:
-	IntArray(int temp);
-	int& operator[] (int temp);
-	int getArrLen();
-	~IntArray();
+	Point(int temp1, int temp2);
+	friend ostream& operator <<(ostream& os, Point& temp);
+};
+
+class PointArray {
+	Point* arr;
+	int len;
+public:
+	PointArray(int temp);
+	Point& operator[](int temp);
+	int getlen();
+	~PointArray();
 };
