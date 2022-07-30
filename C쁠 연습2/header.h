@@ -10,11 +10,12 @@ public:
 };
 
 class PointArray {
-	Point* arr;
+	Point** arr;
 	int len;
 public:
 	PointArray(int temp);
-	Point& operator[](int temp);
+	Point*& operator[](int temp);
+	PointArray& operator=(PointArray& temp);
 	int getlen();
 	~PointArray();
 };

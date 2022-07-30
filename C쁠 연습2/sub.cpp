@@ -15,10 +15,10 @@ ostream& operator <<(ostream& os, Point& temp) {
 
 PointArray::PointArray(int temp) {
 	len = temp;
-	arr = new Point[len];
+	arr = new Point*[len];
 }
 
-Point& PointArray::operator[](int temp) {
+Point*& PointArray::operator[](int temp) {
 	if (temp < 0 || temp>len) {
 		cout << "¹üÀ§¸¦ ¹þ¾î³µ±º";
 		exit(1);
