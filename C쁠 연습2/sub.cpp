@@ -1,33 +1,69 @@
 #include <iostream>
-#include <cstdlib>
 #include"header.h"
 using namespace std;
 
-Point::Point(int temp1 = 0, int temp2=0) {
-	x = temp1;
-	y = temp2;
-}
-ostream& operator <<(ostream& os, Point& temp) {
-	os << '['<<temp.x <<','<<temp.y<<']';
-	return os;
-}
-
-
-PointArray::PointArray(int temp) {
+Array::Array(int temp) {
 	len = temp;
-	arr = new Point*[len];
+	arr = new int[len];
+	for (int i = 0; i < len; i++) {
+		arr[i] = 0;
+	}
+}
+Array::Array(Array& temp) {
+	this->len = temp.len;
+	this->arr = new int[len];
+	for (int i = 0; i < len; i++) {
+		this->arr[i] = temp.arr[i];
+	}
 }
 
-Point*& PointArray::operator[](int temp) {
-	if (temp < 0 || temp>len) {
-		cout << "¹üÀ§¸¦ ¹þ¾î³µ±º";
-		exit(1);
+bool Array::operator==(Array temp) {
+	if (this->len == temp.len) {
+		for (int i = 0; i < len; i++) {
+			if (this->arr[i] != temp.arr[i])
+				return false;
+		}
+		return true;
+	}
+	else
+		return false;
+}
+
+bool Array::operator!=(Array temp) {
+	if (this->len == temp.len) {
+		for (int i = 0; i < len; i++) {
+			if (this->arr[i] != temp.arr[i])
+				return true;
+		}
+		return false;
+	}
+	else
+		return true;
+}
+
+int& Array::operator[](int temp) {
+	if (temp<0 || temp>len) {
+		cout << "¹üÀ§¸¦ ¹þ¾î³²" << endl;
 	}
 	return arr[temp];
 }
-int PointArray::getlen() {
-	return len;
+
+Array& Array::operator=(Array& temp) {
+	this->len = temp.len;
+	this->arr = new int[len];
+	for (int i = 0; i < len; i++) {
+		this->arr[i] = temp.arr[i];
+	}
+	return *this;
 }
-PointArray::~PointArray() {
-	delete []arr;
+
+Array::~Array() {
+	delete[]arr;
+}
+
+ostream& operator<<(ostream& os, Array& temp) {
+	for (int i = 0; i < temp.len; i++) {
+		os << temp.arr[i] << " ";
+	}
+	return os;
 }

@@ -1,21 +1,17 @@
-#include <iostream>
-#include <cstdlib>
+#include<iostream>
 using namespace std;
 
-class Point{
-	int x, y;
-public:
-	Point(int temp1, int temp2);
-	friend ostream& operator <<(ostream& os, Point& temp);
-};
 
-class PointArray {
-	Point** arr;
+class Array {
+	int* arr;
 	int len;
 public:
-	PointArray(int temp);
-	Point*& operator[](int temp);
-	PointArray& operator=(PointArray& temp);
-	int getlen();
-	~PointArray();
+	Array(int temp);
+	Array(Array& temp);
+	bool operator==(Array temp);
+	bool operator!=(Array temp);
+	int& operator[](int temp);
+	Array& operator=(Array& temp);
+	~Array();
+	friend ostream& operator<<(ostream& os, Array& temp);
 };
