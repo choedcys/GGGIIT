@@ -1,17 +1,9 @@
-#include<iostream>
-using namespace std;
-
-
-class Array {
-	int* arr;
-	int len;
+class Number {
+private:
+	int num;
 public:
-	Array(int temp);
-	Array(Array& temp);
-	bool operator==(Array temp);
-	bool operator!=(Array temp);
-	int& operator[](int temp);
-	Array& operator=(Array& temp);
-	~Array();
-	friend ostream& operator<<(ostream& os, Array& temp);
+	Number(int n);
+	void showData();
+	Number* operator->();
+	Number& operator*();
 };
