@@ -3,108 +3,110 @@
 using namespace std;
 
 
-String::String(){
-	len = 0;
-	sen = NULL;
+Date::Date(){}
+Date::Date(int temp1, int temp2, int temp3):y(temp1),m(temp2),d(temp3) {
+	cout << *this<<endl;
 }
-String::String(char* temp1, int temp2) {
-	len = temp2;
-	sen = new char[len + 1];
-	strcpy(sen, temp1);
-}
-String String:: operator+(String temp) {
-	String ret;
-	ret.len = temp.len + this->len;
-	ret.sen = new char[ret.len + 1];
-	strcpy(ret.sen, this->sen);
-	strcat(ret.sen, temp.sen);
-	return ret;
-}
-bool String::operator!() {
-	for (int i = 0; i < len; i++) {
-		if (sen[i] != ' ')
-			return false;
+Date Date::operator++(int temp) {
+	if (m == 12 || d == 31) {
+		m = 1;
+		d = 1;
+		y += 1;
+		return *this;
 	}
-	return true;
-}
-bool String::operator==(String temp) {
-	if (this->len == temp.len) {
-		for (int i = 0; i < this->len; i++) {
-			if (this->sen[i] != temp.sen[i])
-				return false;
+	if (m == 2 || m == 4 || m == 6 || m == 9 || m == 11) {
+		if (m == 2 && d == 28 || m ==2 && d == 29) {
+			if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0) {
+				if (d == 28) {
+					d += 1;
+					return *this;
+				}
+				else {
+					d = 1;
+					m += 3;
+					return *this;
+				}
+			}
+			else {
+				d = 1;
+				m = 3;
+				return *this;
+			}
 		}
-		return true;
-	}
-	else
-		return false;
-}
-bool String::operator!=(String temp) {
-	if (this->len == temp.len) {
-		for (int i = 0; i < this->len; i++) {
-			if (this->sen[i] != temp.sen[i])
-				return true;
+		else {
+			if (d == 30) {
+				d = 1;
+				m += 1;
+				return *this;
+			}
+			else {
+				d += 1;
+				return *this;
+			}
 		}
-		return false;
 	}
-	else
-		return true;
-}
-bool String::operator<(String temp) {
-	int i = 0;
-	while (1) {
-		if (i == this->len || i == temp.len)
-			return false;
-		if (this->sen[i] < temp.sen[i])
-			return true;
-		else if (this->sen[i] > temp.sen[i])
-			return false;
-		else{}
-		i++;
+	else {
+		if (d == 31) {
+			d = 1;
+			m += 1;
+			return *this;
+		}
+		else {
+			d += 1;
+			return *this;
+		}
 	}
-}
-bool String::operator>(String temp) {
-	int i = 0;
-	while (1) {
-		if (i == this->len || i == temp.len)
-			return false;
-		if (this->sen[i] > temp.sen[i])
-			return true;
-		else if (this->sen[i] < temp.sen[i])
-			return false;
-		else {}
-		i++;
-	}
-}
-bool String::operator<=(String temp) {
-	int i = 0;
-	while (1) {
-		if (i == this->len || i == temp.len)
-			return false;
-		if (this->sen[i] <= temp.sen[i])
-			return true;
-		else
-			return false;
-		i++;
-	}
-}
-bool String::operator>=(String temp) {
-	int i = 0;
-	while (1) {
-		if (i == this->len || i == temp.len)
-			return false;
-		if (this->sen[i] >= temp.sen[i])
-			return true;
-		else
-			return false;
-		i++;
-	}
-}
-void String::print() {
-	cout << sen << endl;
 }
 
-
-ostream& operator<<(ostream& os, String temp) {
-	os << temp.sen;
+Date Date::operator--(int temp) {
+	if (m == 1 && d == 1) {
+		d = 31;
+		m = 12;
+		y -= 1;
+		return *this;
+	}
+	if (m == 2 || m == 4 || m == 6 || m == 9 || m == 11) {
+		if (d == 1) {
+			d = 30;
+			m -= 1;
+			return *this;
+		}
+		else {
+			d -= 1;
+			return *this;
+		}
+	}
+	else {
+		if (m == 3 && d == 1) {
+			if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0) {
+				d = 29;
+				m -= 1;
+				return *this;
+			}
+			else {
+				d = 28;
+				m -= 1;
+				return *this;
+			}
+		}
+		if (m == 2 && d == 29) {
+			d -= 1;
+			return *this;
+		}
+		else {
+			if (d == 1) {
+				d = 31;
+				m -= 1;
+				return *this;
+			}
+			else {
+				d -= 1;
+				return *this;
+			}
+		}
+	}
+}
+ostream& operator<<(ostream& os, Date& temp) {
+	os << temp.y << "³â " << temp.m << "¿ù " << temp.d << "ÀÏ ";
 	return os;
 }
