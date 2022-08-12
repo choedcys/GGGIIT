@@ -1,14 +1,18 @@
 #include<iostream>
 using namespace std;
 
-class Date {
-	int y,m,d,tot;
+class Time {
+	int h,m,s;
 public:
-	Date();
-	Date(int temp1, int temp2, int temp3);
+	Time();
+	Time(int temp1, int temp2, int temp3);
+	Time operator+(int temp);
+	Time operator-(int temp);
+	bool operator<(Time temp);
+	bool operator>(Time temp);
+	bool operator==(Time temp);
+	bool operator!=(Time temp);
 	void arrange();
-	void dearrange();
-	Date operator++(int temp);
-	Date operator--(int temp);
-	friend ostream& operator<<(ostream& os, Date& temp);
+	void display();
+	friend istream& operator>>(istream& is, Time& temp);
 };

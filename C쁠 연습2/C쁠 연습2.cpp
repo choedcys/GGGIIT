@@ -5,11 +5,21 @@ using namespace std;
 
 int main()
 {
-	Date d(20,3,1);
-	cout << "++ 연산자 : ";
-	cout << d++ << endl;
-	cout << "-- 연산자 : ";	
-	cout << d--<<endl;
-	cout<<d;
+	Time start(1, 0, 0);
+	cout << "end = start + 1000" << endl;
+	Time end = start + 1000; // 1000초 후
+	end.display();
+	cout << "end = end - 500" << endl;
+	end = end - 500;
+	end.display();
+	bool temp = start < end;
+	cout << "start < end : " << temp << endl;
+	temp = start > end;
+	cout << "start > end : " << temp << endl;
+	Time t;
+	cout << "cin>> ";
+	cin >> t;
+	cout << "cout<< ";
+	t.display();
 	return 0;
 }
