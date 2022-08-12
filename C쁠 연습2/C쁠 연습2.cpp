@@ -5,21 +5,15 @@ using namespace std;
 
 int main()
 {
-	Time start(1, 0, 0);
-	cout << "end = start + 1000" << endl;
-	Time end = start + 1000; // 1000ÃÊ ÈÄ
-	end.display();
-	cout << "end = end - 500" << endl;
-	end = end - 500;
-	end.display();
-	bool temp = start < end;
-	cout << "start < end : " << temp << endl;
-	temp = start > end;
-	cout << "start > end : " << temp << endl;
-	Time t;
-	cout << "cin>> ";
-	cin >> t;
-	cout << "cout<< ";
-	t.display();
+	Fraction a(3, 8);
+	Fraction b(1, 8);
+	Fraction c;
+	c = a + b;
+	cout << "a = ";
+	a.display();
+	cout << "b = ";
+	b.display();
+	cout << "a + b = ";
+	c.display();
 	return 0;
-}
+}
