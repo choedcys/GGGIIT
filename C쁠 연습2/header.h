@@ -1,12 +1,17 @@
 #include<iostream>
 using namespace std;
 
-class Fraction {
-	int up, down;
+class Set {
+	int arr[20];
+	int cnt = -1;
 public:
-	Fraction();
-	Fraction(int temp1, int temp2);
-	Fraction operator=(Fraction temp);
-	Fraction operator+(Fraction temp);
+	Set();
+	void arrange();
+	Set operator+(int temp);
+	Set operator-(int temp);
+	Set operator&(Set temp);
+	Set operator|(Set temp);
+	bool operator==(Set temp);
+	friend ostream& operator<<(ostream& os, Set& temp);
 	void display();
 };
