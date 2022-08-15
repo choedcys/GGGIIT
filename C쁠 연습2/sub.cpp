@@ -52,22 +52,25 @@ Set Set::operator&(Set temp) {
 }
 Set Set::operator|(Set temp) {
 	Set res;
-	bool find = true;
 	Set complex = *this & temp;
-	for (int row = 0; row < this->cnt+1; row++) {
-		for (int col = 0; col < complex.cnt+1; col++) {
-			if (complex.arr[col] == this->arr[row])
-				find == false;
+	bool find = true;
+	//1. this와 교집합을 분석하여 차집합을 res에 저장
+	//2. res에 temp를 모두저장
+	for (int row = 0; row < this->cnt + 1; row++) {
+		for (int col = 0; col < complex.cnt + 1; col++) {
+			if (this->arr[row] == complex.arr[col]) {
+				find = false;
+			}
 		}
-		if(find == true)
-			res.arr[++res.cnt] = this->arr[row];
+		if (find == true) {
+			res + this->arr[row];
+		}
+		else{}
 		find = true;
 	}
-	res.display();
-	for (int col = 0; col < temp.cnt+1; col++) {
-		res.arr[++res.cnt] = temp.arr[col];
+	for (int i = 0; i < temp.cnt + 1; i++) {
+		res + temp.arr[i];
 	}
-	
 	return res;
 }
 
@@ -94,4 +97,27 @@ void Set::display() {
 	cout << "}"<<endl;
 }
 
-ostream& operator<<(ostream& os, Set& temp);
+ostream& operator<<(ostream& os, Set& temp) {
+	os << "{";
+	for (int i = 0; i < temp.cnt + 1; i++) {
+		os << temp.arr[i];
+		if (i != temp.cnt)
+			os << ",";
+	}
+	os << "}" << endl;
+	return os;
+}
+
+istream& operator>>(istream& is, Set& temp) {
+	int t;
+	is >> t;
+	for (int i = 0; i < temp.cnt + 1; i++) {
+		if (t == temp.arr[i]) {
+			cout << "중복입니다." << endl;
+			return is;
+		}
+	}
+	temp.arr[++temp.cnt] = t;
+	temp.arrange();
+	return is;
+}

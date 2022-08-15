@@ -13,5 +13,6 @@ public:
 	Set operator|(Set temp);
 	bool operator==(Set temp);
 	friend ostream& operator<<(ostream& os, Set& temp);
+	friend istream& operator>>(istream& is, Set& temp);
 	void display();
 };

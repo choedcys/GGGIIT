@@ -12,17 +12,17 @@ int main()
 	A.display();
 	A + 4;
 	A.display();
-	A - 4;
+	A + 5;
 	A.display();
-	A + 4;
+	A + 6;
 	A.display();
 
 	cout << "집합 B의 원소는 : " << endl;
 	B + 3;
 	B.display();
-	B + 4;
+	B + 7;
 	B.display();
-	B + 5;
+	B + 9;
 	B.display();
 	cout << "집합 A와 B의 합집합 : " << endl;
 	C = A | B;
@@ -37,9 +37,9 @@ int main()
 	else
 		cout << "false" << endl;
 	cout << "집합 A의 <<연산자 : " << endl;
-	//cout << A;
+	cout << A;
 	cout << "집합 A의 >>연산자 : " << endl;
-	/*cin >> A;
-	A.display();*/
+	cin >> A;
+	A.display();
 	return 0;
 }
